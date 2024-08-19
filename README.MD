@@ -1,0 +1,3 @@
+## Compiladão de Artigos 
+
+Este é repositório dos sonhos contem apenas informações relevantes a Arquitetura e Desenvolvimento de Sistemas, um guia prático, não muito moroso, onde tento abstrair da melhor forma conceitos simples onde as vezes nos vemos travados(e era só questão de perspectiva). Espero que considerem úteis as informações contidas aqui, e, se houver dicas, por favor, Adicione Issues a este Repositório, seria show de bola ter mais contribuidores. 
