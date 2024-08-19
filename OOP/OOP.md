@@ -35,7 +35,7 @@ Aqui está um exemplo utilizando a linguagem C#
 
 **public**: Quando um tipo ou membro é declarado como público, significa que **qualquer código em qualquer parte do programa pode acessá-lo**. É como se fosse uma porta aberta para todos. Por exemplo, se você tem uma classe chamada "Carro" com um método público chamado "ligarMotor", qualquer parte do programa pode chamar esse método e ligar o motor do carro.
 
-**private**: Quando um membro é declarado como privado, significa que ***apenas o código dentro da mesma classe ou estrutura pode acessá-lo***. É como se fosse uma porta trancada que só pode ser aberta de dentro. Por exemplo, se você tem uma classe chamada "Pessoa" com um campo privado chamado "nome", apenas os métodos dentro da classe "Pessoa" podem ler ou modificar esse campo.
+**private**: Quando um membro é declarado como privado, significa que **apenas o código dentro da mesma classe ou estrutura pode acessá-lo**. É como se fosse uma porta trancada que só pode ser aberta de dentro. Por exemplo, se você tem uma classe chamada "Pessoa" com um campo privado chamado "nome", apenas os métodos dentro da classe "Pessoa" podem ler ou modificar esse campo.
 
 **protected**: Quando um tipo ou membro é declarado como protegido, significa que **apenas o código dentro da mesma classe ou em uma classe derivada (que herda da classe atual) pode acessá-lo**. É como se fosse uma porta trancada que só pode ser aberta por membros da família. Por exemplo, se você tem uma classe chamada "Animal" com um método protegido chamado "mover", apenas os métodos dentro da classe "Animal" ou em uma classe derivada, como "Cachorro" ou "Gato", podem chamar esse método.
 ##
@@ -79,7 +79,7 @@ Sim, só lendo é um pouco complexo de entender, então vamos a prática!
             return ficha;
             }
         }
-
+        // Classe publica(filha) que Herda a classe Carro(Superclasse)
         public class Teste : Carro
         {
             public void testarMotor()
@@ -92,21 +92,22 @@ Sim, só lendo é um pouco complexo de entender, então vamos a prática!
             }
         }
 
+        // aqui eh onde o programa roda de fato! e sua classe eh publica(Padrao do Main)
         public class Program
         {
             public static void Main(string[] args)
             {
-                Teste teste = new Teste();
-                teste.testarMotor();
-                teste.fichaTecnica();
+                Teste teste = new Teste(); // I  
+                teste.testarMotor(); // 
+                teste.fichaTecnica(); // retorna
                 
-                var r1 = teste.QtdPorta;
-                var r2 = teste.Cor;
-            // var r3 = teste.Placa;
+                var r1 = teste.QtdPorta; // isso retorna o valor contido em {QtdPorta}
+                var r2 = teste.Cor; // isso retorna o texto contido em {Cor}
+                var r3 = teste.Placa; // aqui temos um erro de acesso a um objeto Privado
                 
-                Console.WriteLine($"\n\n{r1}");
-                Console.WriteLine($"\n\n{r2}");
-                //Console.WriteLine(r3);
+                Console.WriteLine(r1); // retona = 3
+                Console.WriteLine(r2); // retorna = "Prata"
+                Console.WriteLine(r3); // nao ira exibir dados devido erro de acesso
                 
             }
         }
