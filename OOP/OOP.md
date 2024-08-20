@@ -56,9 +56,9 @@ Aqui está um exemplo utilizando a linguagem C#
 ### Mão na Massa 
 Sim, só lendo é um pouco complexo de entender, então vamos a prática!
 
- - Exemplo de Herança, Encapsulamento e Polimorfismo em C#. Clique **[Aqui](/OOP/HANDZONE/ModificadoresDeAcesso.cs)**
+ - Exemplo de Herança, Encapsulamento e Polimorfismo em C#. Clique **[Aqui](/OOP/HANDZONE/CasoUm.cs)**
 
- - 
+ - Exemplo de Método Protegido em C#. Clique **[Aqui](/OOP/HANDZONE/CasoDois.cs)**
     
 
 
