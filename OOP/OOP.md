@@ -56,62 +56,10 @@ Aqui está um exemplo utilizando a linguagem C#
 ### Mão na Massa 
 Sim, só lendo é um pouco complexo de entender, então vamos a prática!
 
- - Modificador público 
+ - Exemplo de Herança, Encapsulamento e Polimorfismo em C#. Clique **[Aqui](/OOP/HANDZONE/ModificadoresDeAcesso.cs)**
 
-        // Aqui criamos nossa classe publica(Superclasse)
-        public class Carro
-        {
-        
-            public int QtdPorta { get; set; } = 3;
-            public string Cor { get; set; } = "Prata";
-            private string Placa { get; set; } = "EDK2024";
-                
-            public bool ligarMotor()
-            {
-                bool estaLigado = true;
-                Console.WriteLine("O motor está ligado!");
-                return estaLigado;
-            }
-            public string informacoesVeiculo()
-            {
-            var ficha =   ($" QtdPorta: {QtdPorta},\n Cor: {Cor},\n Placa: {Placa}");
-            Console.WriteLine(ficha);
-            return ficha;
-            }
-        }
-        // Classe publica(filha) que Herda a classe Carro(Superclasse)
-        public class Teste : Carro
-        {
-            public void testarMotor()
-            {
-                ligarMotor();
-            }
-            public void fichaTecnica()
-            {
-            informacoesVeiculo();
-            }
-        }
-
-        // aqui eh onde o programa roda de fato! e sua classe eh publica(Padrao do Main)
-        public class Program
-        {
-            public static void Main(string[] args)
-            {
-                Teste teste = new Teste(); // I  
-                teste.testarMotor(); // 
-                teste.fichaTecnica(); // retorna
-                
-                var r1 = teste.QtdPorta; // isso retorna o valor contido em {QtdPorta}
-                var r2 = teste.Cor; // isso retorna o texto contido em {Cor}
-                var r3 = teste.Placa; // aqui temos um erro de acesso a um objeto Privado
-                
-                Console.WriteLine(r1); // retona = 3
-                Console.WriteLine(r2); // retorna = "Prata"
-                Console.WriteLine(r3); // nao ira exibir dados devido erro de acesso
-                
-            }
-        }
-
+ - 
+    
 
 
 
