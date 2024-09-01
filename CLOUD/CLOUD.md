@@ -1,6 +1,6 @@
 ![MULTICLOUD IMG](/img/multcloud.png)
 
-## Clod vs Multicloud
+## Cloud vs Multicloud
 
 A nuvem (cloud) é um termo utilizado para se referir a recursos de computação, armazenamento e serviços disponíveis pela internet. Em vez de executar aplicativos ou armazenar dados localmente em um computador pessoal ou servidor local, você pode acessar e utilizar esses recursos remotamente por meio da internet.
 
