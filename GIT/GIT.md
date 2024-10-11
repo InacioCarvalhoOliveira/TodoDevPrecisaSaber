@@ -105,6 +105,8 @@ O type é responsável por nos dizer qual o tipo de alteração ou iteração es
     Exemplo: Circle, Travis, BrowserStack, etc.
     revert: indica a reverão de um commit anterior.
 
+    "WIP": Working-in-progress : indica mudanças recentes dentro da feature as quais integram ela, porem estão sendo melhores desenvolvidas
+
 
 
 De forma geral Este é o conceito de Controle de Versionamento no Git deixo um link aqui contendo casos de erros que podem acontecer durante o processo :
