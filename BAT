@@ -1,0 +1,41 @@
+@echo OFF
+setlocal EnableExtensions
+set __COMPAT_LAYER=RunAsInvoker
+
+REM PASTA RAIZ (ajuste se precisar)
+set "TEM_PATH=C:\Git\Dotnet\APIS\L2Code"
+
+REM SÓ ARQUIVOS TEXTO (lista branca)
+for /R "%TEM_PATH%" %%f in (*.json *.cs *.csproj *.sln *.http *.config *.xml *.yml *.yaml *.txt *.md *.props *.targets) do (
+    set "EXT=%%~xf"
+    setlocal EnableDelayedExpansion
+
+    echo Processando arquivo: %%f
+
+    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+        "$file = '%%f';" ^
+        "$content = Get-Content -Raw -Path $file -Encoding UTF8 -ErrorAction SilentlyContinue;" ^
+        "if([string]::IsNullOrEmpty($content)) { Write-Output '  Sem match (arquivo vazio ou nao-texto)'; exit }" ^
+        "$original = $content;" ^
+        "$replacements = @(" ^
+        "    @{ Old='@L2Code_HostAddress = http://localhost:5214'; New='@L2Code_HostAddress = http://localhost:5215' }," ^
+        "    @{ Old='VisualStudioVersion = 17.5.2.0'; New='VisualStudioVersion = 17.5.2.1' }," ^
+        "    @{ Old='\"Microsoft.AspNetCore\"\s*:\s*\"Information5\"'; New='\"Microsoft.AspNetCore\": \"Information6\"' }," ^
+        "    @{ Old='\"Microsoft.AspNetCore.OpenApi\"\s*:\s*\"9.0.5\"'; New='\"Microsoft.AspNetCore.OpenApi\": \"9.0.6\"' }," ^
+        "    @{ Old='\"Default\"\s*:\s*\"Information\"'; New='\"Default\": \"Warning\"' }" ^
+        ");" ^
+        "foreach($r in $replacements) { $content = [regex]::Replace($content, $r.Old, $r.New) };" ^
+        "if($content -ne $original) {" ^
+        "    Set-Content -Path $file -Value $content -NoNewline -Encoding UTF8;" ^
+        "    Write-Output '  ALTERADO';" ^
+        "} else {" ^
+        "    Write-Output '  Sem match';" ^
+        "    Select-String -Path $file -Pattern 'Microsoft.AspNetCore','Microsoft.AspNetCore.OpenApi','L2Code_HostAddress','Default' -ErrorAction SilentlyContinue | ForEach-Object { ('  ' + $_.Path + ':' + $_.LineNumber + ': ' + $_.Line.Trim()) };" ^
+        "}"
+
+    endlocal
+)
+
+echo.
+echo Substituicoes concluidas em %TEM_PATH%
+pause
